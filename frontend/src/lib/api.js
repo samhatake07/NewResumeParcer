@@ -1,9 +1,15 @@
 // Talks to the Express backend in ../backend.
 //
-// The base URL is configurable so the same build works locally and on Vercel:
-// local dev points at localhost:5000, production points at the deployed API.
-// Vite only exposes env vars prefixed with VITE_ to the browser bundle.
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+// Requests are same-origin. Both services deploy as one Vercel project, and the
+// top-level rewrite sends /api/* to the backend service, so the browser never
+// needs the backend's hostname compiled into it. Locally the Vite dev server
+// proxies /api to localhost:5000 (see vite.config.js), which keeps the very same
+// paths working without a base URL.
+//
+// VITE_API_URL survives as an optional override for pointing at a *different*
+// backend. Vite only exposes VITE_-prefixed vars to the browser bundle, and it
+// substitutes them at build time, not at runtime.
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 // Sends the PDF to POST /api/resume/upload as multipart/form-data.
 //
