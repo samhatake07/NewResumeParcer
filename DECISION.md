@@ -12,10 +12,10 @@ add vercel.json file to backend and frontend folder, I am going to create two pr
  
  Below is the format to connect to labd ai, lets connect and parse the resume and give the score
  
-quickstart
- 
+Quickstart
+
 Send the conversation so far as messages, each a role (user or assistant) and its content, ending on the user's turn. labd answers once, in JSON: message.content is the reply and credits.percentLeft is what is left of your allowance. Nothing is remembered between requests, so send the earlier turns yourself when you want a conversation.
- 
+
 curl https://agent.thedevlabs.io/v1/api/chat \
   -H "Authorization: Bearer $LABD_API_KEY" \
   -H "Content-Type: application/json" \
@@ -32,6 +32,9 @@ const res = await fetch('https://agent.thedevlabs.io/v1/api/chat', {
 });
 const { message, credits } = await res.json();
 console.log(message.content, `${credits.percentLeft}% left`);
+
 Keep the key on a server. labd does not answer browsers on other sites, so a key in a web page is a key anyone viewing it can copy and nothing you can use.
+
 401 the key is wrong or revoked · 402 the allowance is used up · 403 the API is switched off · 429 too many requests this minute, wait and retry.
+
 Every answer spends the same allowance as labd in the portal, your editor and your terminal.
