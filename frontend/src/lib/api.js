@@ -52,7 +52,12 @@ export async function compareResumeFile(file, jobDescription) {
 
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
-    throw new Error(body.error || `Comparison failed (${res.status})`);
+    // Include `detail` when the server sent one. Without it, a failed deploy
+    // only ever shows "Database unavailable" — the actual reason (bad auth, IP
+    // not allowlisted, no env vars set) is dropped right here, which is what
+    // makes this class of bug take an afternoon instead of a minute.
+    const reason = body.detail ? `: ${body.detail}` : "";
+    throw new Error((body.error || `Comparison failed (${res.status})`) + reason);
   }
 
   return res.json();
