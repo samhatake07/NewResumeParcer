@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>0 to Shipped — Resume Parser</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
+
+<!-- The original static markup is kept below, commented out for reference. -->
+<!--
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#">0<span>→</span>Shipped <em>Resume Parser</em></a>
+      <nav>
+        <a href="#upload">Parser</a>
+        <a href="#how">How it works</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">Upload a PDF · Get a score in seconds</p>
+        <h1>Does your resume <span class="accent">make the cut?</span></h1>
+        <p class="sub">
+          Drop in your resume PDF. We check it against a real job-market skill
+          checklist and tell you what you have, what you're missing, and how
+          you score.
+        </p>
+      </div>
+    </section>
+
+    <section id="upload" class="upload-section">
+      <div class="container">
+        <div id="dropzone" class="dropzone" tabindex="0" role="button"
+             aria-label="Upload your resume PDF">
+          <input type="file" id="file-input" accept="application/pdf" hidden />
+          <div class="dropzone-idle">
+            <div class="dz-icon">📄</div>
+            <p class="dz-title">Drop your resume here</p>
+            <p class="dz-hint">or click to browse — PDF only</p>
+          </div>
+          <div class="dropzone-file" hidden>
+            <div class="dz-icon">✅</div>
+            <p class="dz-title" id="file-name">resume.pdf</p>
+            <p class="dz-hint" id="file-size">—</p>
+          </div>
+        </div>
+
+        Parse in progress
+        <div id="parsing" class="panel" hidden>
+          <div class="spinner"></div>
+          <p id="parse-status">Reading your resume…</p>
+        </div>
+
+        Results
+        <div id="results" class="results" hidden>
+          <div class="score-card panel">
+            <div class="score-ring">
+              <svg viewBox="0 0 120 120">
+                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                <circle id="ring-fill" class="ring-fill" cx="60" cy="60" r="52" />
+              </svg>
+              <div class="score-number">
+                <span id="score-value">0</span><small>/100</small>
+              </div>
+            </div>
+            <div class="score-copy">
+              <h2 id="score-label">Your resume score</h2>
+              <p id="score-feedback"></p>
+              <button id="reset-btn" class="btn btn-ghost">Parse another resume</button>
+            </div>
+          </div>
+
+          <div class="skills-grid">
+            <div class="panel">
+              <h3><span class="dot dot-good"></span> Skills present <span id="present-count" class="count"></span></h3>
+              <ul id="present-skills" class="skill-list"></ul>
+            </div>
+            <div class="panel">
+              <h3><span class="dot dot-bad"></span> Skills missing <span id="missing-count" class="count"></span></h3>
+              <ul id="missing-skills" class="skill-list"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="how">
+      <div class="container how-grid">
+        <div class="how-step">
+          <span class="step-num">1</span>
+          <h3>Upload</h3>
+          <p>Drop a PDF of your resume. Nothing leaves your browser in this demo.</p>
+        </div>
+        <div class="how-step">
+          <span class="step-num">2</span>
+          <h3>Parse</h3>
+          <p>The parser extracts your sections and matches skills against the checklist.</p>
+        </div>
+        <div class="how-step">
+          <span class="step-num">3</span>
+          <h3>Ship</h3>
+          <p>Fix what's missing, bump the score, and send the resume out.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>0 to Shipped Resume Parser — mock build, no data leaves your browser.</p>
+    </div>
+  </footer>
+</html>
+-->
