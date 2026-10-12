@@ -1,10 +1,25 @@
 // Central config, read from environment variables.
 // See env.example for what to set.
+import { fileURLToPath } from 'node:url';
+import dotenv from 'dotenv';
+
+// Load .env by an absolute path anchored to *this file*, not to the directory
+// the process happens to start in.
 //
-// Loaded here as well as in server.js so this module works on its own (tests,
-// scripts, the Vercel handler) and not only when something else loaded dotenv
-// first. Importing it twice is harmless.
-import 'dotenv/config';
+// The bare `import 'dotenv/config'` this replaces resolved .env against
+// process.cwd(). Start the process from anywhere else — a test run from the repo
+// root, `npm --prefix`, a tool that shells out, the frontend's Vite server
+// importing a backend module — and dotenv quietly finds no file at all. Every
+// value then falls back to its default, and the failure surfaces far away as
+// ECONNREFUSED 127.0.0.1:27017 (the localhost default) rather than as "your .env
+// was not read". Anchoring the path removes the whole class of bug.
+//
+// override: false keeps real environment variables winning, which is what lets
+// Vercel inject production values without .env shadowing them.
+dotenv.config({
+  path: fileURLToPath(new URL('../.env', import.meta.url)),
+  override: false,
+});
 
 // Each name is read under both spellings we have seen in the wild: the
 // documented one from env.example, and the MONGODB_-prefixed alias. A name that
